@@ -5,7 +5,7 @@ const middleware = require('./middleware.js')
 
 const app = express()
 middleware(app)
-db(app)
+db()
 routes(app)
 
 app.listen(3000, () => {
