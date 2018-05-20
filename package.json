@@ -1,7 +1,7 @@
 {
-  "name": "express-es6-rest-api",
-  "version": "0.3.0",
-  "description": "Starter project for an ES6 RESTful Express API",
+  "name": "curriculummapping",
+  "version": "0.0.1",
+  "description": "The backend system for the curriculum mapping project!",
   "main": "dist",
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
@@ -24,9 +24,8 @@
       "no-unused-vars": 1
     }
   },
-  "repository": "developit/express-es6-rest-api",
-  "author": "Jason Miller <jason@developit.ca>",
-  "license": "MIT",
+  "repository": "jacsmith21/curriculummapping-backend",
+  "author": "Jacob Smith <jacob.smith@unb.ca>",
   "dependencies": {
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",

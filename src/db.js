@@ -1,4 +1,12 @@
-export default callback => {
-	// connect to a database if needed, then pass it to `callback`:
-	callback();
+const mongoose = require('mongoose')
+const config = require('./config')
+
+module.exports = () => {
+  mongoose.connect(config.url)
+    .then(() => {
+      console.log("Successfully connected to the database")
+    }).catch(err => {
+    console.error(err)
+    process.exit()
+  })
 }

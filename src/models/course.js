@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const models = require('../models');
 
 const Course = mongoose.Schema({
   name: String,
@@ -9,4 +10,4 @@ const Course = mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Course', Course);
+module.exports = models.model('Course', Course);
