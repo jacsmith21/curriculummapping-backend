@@ -1,5 +1,6 @@
 const express = require('express')
 const db = require('./db')
+const config = require('./config')
 const routes = require('./routes')
 const middleware = require('./middleware.js')
 
@@ -8,6 +9,6 @@ middleware(app)
 db()
 routes(app)
 
-app.listen(3030, () => {
-  console.log("Server is listening on port 3000")
+app.listen(config.port, () => {
+  console.log("Server is listening on port " + config.port)
 });
