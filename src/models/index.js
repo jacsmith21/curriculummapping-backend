@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 
-function model (name, schema) {
+export const model = (name, schema) => {
   let model = mongoose.model(name, schema)
 
+  // TODO: Use proper methods. Ex model.query... or model.methods...
   model.getAll = (req, res) => {
     model.find()
       .then(instances => {
@@ -66,5 +67,3 @@ function model (name, schema) {
 
   return model
 }
-
-module.exports.model = model
