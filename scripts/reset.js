@@ -16,8 +16,13 @@ db().then(() => {
 
       console.log('Creating ' + item.name)
       for (const [i, prerequisite] of prerequisites.entries()) {
-        console.log('Replacing ' + prerequisite + ' with ' + lookup[prerequisite])
-        prerequisites[i] = lookup[prerequisite]
+        const id = lookup[prerequisite]
+        if (!id) {
+          throw "No associated course for " + prerequisite
+        }
+
+        console.log('Replacing ' + prerequisite + ' with ' + id)
+        prerequisites[i] = id
       }
 
       let instance = new course(item)

@@ -33,7 +33,7 @@ module.exports = [
   },
   {
     name: 'CS3503',
-    prerequisites: ['CS1103']
+    prerequisites: ['INFO1103']
   },
   {
     name: 'CS3413',
