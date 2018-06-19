@@ -1,9 +1,14 @@
 const course = require('./course.js')
+const express = require('express')
+const subdomain = require('express-subdomain')
 
 module.exports = (app) => {
-  app.get('/', (req, res) => {
+  const router = express.Router()
+
+  router.get('/', (req, res) => {
     res.json({"message": "Welcome to Jacob's application. This is the API!"})
   });
 
-  course(app)
+  course(router)
+  app.use(subdomain('api', router))
 }

@@ -1,9 +1,9 @@
 const courses = require('../models/course.js');
 
-module.exports = (app) => {
-  app.get('/courses', courses.getAll)
-  app.post('/courses', courses.create)
-  app.get('/courses/:id', courses.get)
-  app.put('/courses/:id', courses.update)
-  app.delete('/courses/:id', courses.delete)
+module.exports = (router) => {
+  router.get('/courses', courses.getAll)
+  router.post('/courses', courses.create)
+  router.get('/courses/:id', courses.get)
+  router.put('/courses/:id', courses.update)
+  router.delete('/courses/:id', courses.delete)
 }
