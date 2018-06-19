@@ -3,7 +3,7 @@ const config = require('./config')
 
 module.exports = () => {
   return new Promise((resolve) => {
-    mongoose.connect(config.url)
+    mongoose.connect(config.url, {autoIndex: false})
         .then(() => {
           console.log("Successfully connected to the database at " + config.url)
           resolve()

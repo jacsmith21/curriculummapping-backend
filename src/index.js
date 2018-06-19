@@ -8,6 +8,7 @@ const app = express()
 middleware(app)
 db()
 routes(app)
+app.get('/health-check', (req, res) => res.sendStatus(200));
 
 app.listen(config.port, () => {
   console.log("Server is listening on port " + config.port)

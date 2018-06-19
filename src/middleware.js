@@ -1,4 +1,5 @@
 const bodyParser = require('body-parser')
+const express = require('express')
 const cors = require('cors')
 
 module.exports = (app) => {
@@ -11,4 +12,6 @@ module.exports = (app) => {
   
   // parse requests of content-type - application/json
   app.use(bodyParser.json())
+
+  app.use(express.static('static'));
 }
