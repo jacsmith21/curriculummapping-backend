@@ -1,6 +1,5 @@
 const course = require('./course.js')
 const express = require('express')
-const subdomain = require('express-subdomain')
 
 module.exports = (app) => {
   const router = express.Router()
@@ -10,5 +9,5 @@ module.exports = (app) => {
   });
 
   course(router)
-  app.use(subdomain('api', router))
+  app.use(router)
 }
