@@ -33,7 +33,9 @@ const Course = mongoose.Schema({
   },
   description: String,
   learningOutcomes: [String],
-  prerequisites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
+  prerequisites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
+  recommended: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
+  corequisites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
 }, {
   timestamps: true
 });
