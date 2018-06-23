@@ -51,9 +51,10 @@ db().then(() => {
     let savedInformation = {}
     for (const item of data) {
       console.log(`Saving information from ${item.name}`)
-      savedInformation[item.name] = {prerequisites: item.prerequisites, corequisites: item.corequisites}
+      savedInformation[item.name] = {prerequisites: item.prerequisites, corequisites: item.corequisites, recommended: item.recommended}
       item.prerequisites = []
       item.corequisites = []
+      item.recommended = []
 
       await create(item)
     }
@@ -66,9 +67,30 @@ db().then(() => {
       console.log(`Updating ${name} with prereqs and coreqs`)
       const prerequisites = savedInformation[name].prerequisites
       const corequisites = savedInformation[name].corequisites
+      const recommended = savedInformation[name].recommended
 
-      resolve(prerequisites)
+
+      // resolving prerequisites
+      for (const obj of prerequisites) {
+        for (const key of Object.keys(obj)) {  // iterate over prerequisite & alternative
+          const name = obj[key]
+
+          if (!(name in lookup)) {
+            console.log(`Skipping ${name}`)
+            delete obj[key]
+            continue
+          }
+
+          const id = lookup[name]._id
+          console.log(`Replacing ${name} with ${id}`)
+          obj[key] = id
+        }
+
+      }
+
+      // resolving corequisites & recommended
       resolve(corequisites)
+      resolve(recommended)
 
       let instance = lookup[name]
       instance.prerequisites = prerequisites

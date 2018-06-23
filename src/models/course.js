@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const models = require('../models');
 
+const object = (name) => { return {type: mongoose.Schema.Types.ObjectId, ref: name} }
+
 const Course = mongoose.Schema({
   name: {type: String, unique: true, required: true},
   title: String,
@@ -34,10 +36,10 @@ const Course = mongoose.Schema({
   },
   description: String,
   learningOutcomes: [String],
-  prerequisites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
-  recommended: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
-  corequisites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
-  benchmarks: [{type: mongoose.Schema.Types.ObjectId, ref: 'Benchmark'}]
+  prerequisites: [{prerequisite: object('Course'), alternative: object('Course')}],
+  recommended: [object('Course')],
+  corequisites: [object('Course')],
+  benchmarks: [object('Benchmark')]
 }, {
   timestamps: true
 });
