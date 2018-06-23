@@ -29,13 +29,15 @@ const Course = mongoose.Schema({
     professionalism: String,
     impacts: String,
     ethics: String,
-    economics: String, ll: String
+    economics: String,
+    ll: String
   },
   description: String,
   learningOutcomes: [String],
   prerequisites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
   recommended: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
-  corequisites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
+  corequisites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
+  benchmarks: [{type: mongoose.Schema.Types.ObjectId, ref: 'Benchmark'}]
 }, {
   timestamps: true
 });

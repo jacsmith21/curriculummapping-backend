@@ -1,7 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const data = require('./data')
 const db = require('../src/db')
-const Course = require('../src/models/course.js');
+const Course = require('../src/models/course.js')
+const Benchmark = require('../src/models/benchmark.js')
 
 let lookup = {}
 
@@ -40,7 +41,7 @@ db().then(() => {
         return
       }
 
-      console.log(`Saving ${course.name}`)
+      console.log(`Saved ${course.name}`)
       lookup[instance.name] = instance
     }
 
@@ -74,6 +75,18 @@ db().then(() => {
       instance.corequisites = corequisites
       await Course.findByIdAndUpdate(instance._id, instance, {new: true})
     }
+
+    for (const name of ['Benchmark 1.0', 'Benchmark 1.1', 'Benchmark 1.2', 'Benchmark 1.3', 'Benchmark 2.0']) {
+      console.log(`Saving benchmark: ${name}`)
+
+      let instance = new Benchmark({name: name})
+      try {
+        instance = await instance.save()
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
     console.log('Done initializing database!')
   })
 })

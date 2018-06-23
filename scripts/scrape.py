@@ -24,11 +24,11 @@ for link in soup.findAll('a', href=re.compile('\.\./frederictoncourses/'))[:41]:
     course['description'] = soup.find('course_description').text
 
     course['prerequisites'] = []
-    for a in soup.find('course_prereq').findAll('a'):
+    for a in [*soup.select('course_prereq > p > a'), *soup.select('course_prereq > a')]:
         course['prerequisites'].append(a.text.replace(' ', ''))
 
     course['corequisites'] = []
-    for a in soup.find('course_coreq').findAll('a'):
+    for a in [*soup.select('course_coreq > p > a'), *soup.select('course_coreq > a')]:
         course['corequisites'].append(a.text.replace(' ', ''))
 
     data.append(course)
