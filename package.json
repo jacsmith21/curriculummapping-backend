@@ -28,6 +28,7 @@
   "repository": "jacsmith21/curriculummapping-backend",
   "author": "Jacob Smith <jacob.smith@unb.ca>",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "cors": "^2.7.1",
