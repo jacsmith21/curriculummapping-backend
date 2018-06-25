@@ -36,9 +36,9 @@ const Course = mongoose.Schema({
   },
   description: String,
   learningOutcomes: [String],
-  prerequisites: [{prerequisite: object('Course'), alternative: object('Course')}],
-  recommended: [object('Course')],
-  corequisites: [object('Course')],
+  prerequisites: String,
+  recommended: String,
+  corequisites: String,
   benchmarks: [object('Benchmark')]
 }, {
   timestamps: true
